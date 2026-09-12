@@ -1,0 +1,23 @@
+{
+  "denial_id": "DEN-2026-1193",
+  "patient_name": "Marcus Vance",
+  "patient_dob": "1975-11-20",
+  "insurer": "UnitedHealthcare",
+  "claim_number": "UHC-77402-B",
+  "date_of_service": "2026-08-15",
+  "denial_date": "2026-09-02",
+  "erisa_deadline_days": 180,
+  "filing_deadline_date": "2027-03-01",
+  "cpt_code": "J0135",
+  "cpt_description": "Injection, adalimumab (Humira), 20 mg",
+  "icd10_code": "K50.00",
+  "icd10_description": "Crohn's disease of small intestine without complications",
+  "billed_amount_cents": 1850000,
+  "denial_code": "PR-197",
+  "denial_reason": "Step Therapy Requirement Not Met: Plan requires trial and clinical failure of two preferred biosimilars or generic immunosuppressives (azathioprine / methotrexate) prior to authorization of brand biologic.",
+  "clinical_facts": {
+    "treating_physician": "Dr. Elena Rostova, MD (Gastroenterology)",
+    "contraindication_documented": "Patient suffered severe drug-induced hepatotoxicity (ALT > 350 U/L) on azathioprine in 2024 and developed intractable pancytopenia on methotrexate. Generic step therapy is medically contraindicated.",
+    "disease_severity": "Endoscopic simple endoscopic score for Crohn's disease (SES-CD) = 14 (severe ulceration, terminal ileum). Withholding biologic therapy risks bowel perforation and emergency resection."
+  }
+}

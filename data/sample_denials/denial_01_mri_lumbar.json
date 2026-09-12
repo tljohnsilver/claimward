@@ -1,0 +1,23 @@
+{
+  "denial_id": "DEN-2026-0842",
+  "patient_name": "Sarah Jenkins",
+  "patient_dob": "1982-05-14",
+  "insurer": "Cigna HealthCare",
+  "claim_number": "CLM-99214-X",
+  "date_of_service": "2026-08-10",
+  "denial_date": "2026-08-28",
+  "erisa_deadline_days": 180,
+  "filing_deadline_date": "2027-02-24",
+  "cpt_code": "72148",
+  "cpt_description": "Magnetic Resonance Imaging (MRI), Lumbar Spine; without contrast material",
+  "icd10_code": "M54.51",
+  "icd10_description": "Vertebrogenic low back pain with radiculopathy into left lower extremity",
+  "billed_amount_cents": 485000,
+  "denial_code": "PR-204",
+  "denial_reason": "Not Medically Necessary: Current clinical documentation fails to verify completion of at least 6 weeks of conservative, non-operative therapy (including physical therapy and NSAIDs) prior to advanced neuroimaging.",
+  "clinical_facts": {
+    "treating_physician": "Dr. Robert Vance, MD (Orthopedic Spine Specialist)",
+    "conservative_therapy_completed": "Patient completed 8 weeks of supervised physical therapy at Apex Physical Therapy (June 2 - July 28, 2026) with zero symptom resolution.",
+    "neurological_findings": "Progressive motor deficit: 4/5 left extensor hallucis longus weakness, positive straight leg raise at 30 degrees, absent left Achilles reflex. Risk of permanent axonal damage without immediate surgical evaluation."
+  }
+}

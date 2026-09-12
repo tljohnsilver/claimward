@@ -1,0 +1,32 @@
+{
+  "72148": {
+    "cpt_code": "72148",
+    "description": "MRI Lumbar Spine without Contrast",
+    "guideline_authority": "CMS LCD L34220 / American College of Radiology (ACR) Appropriateness Criteria",
+    "medical_necessity_criteria": [
+      "Lower extremity radicular pain corresponding to specific dermatome with neurological signs (reflex change, sensory loss, motor weakness).",
+      "Failure of conservative therapy (minimum 6 weeks) OR immediate imaging indicated when progressive motor deficit or red flag symptoms are present.",
+      "Evaluation for surgical candidate or epidural steroid injection planning."
+    ],
+    "appeal_argument_template": "The adverse determination citing lack of conservative therapy is clinically unfounded. As documented in clinical records, patient completed 8 weeks of supervised physical therapy without resolution. Furthermore, under ACR Appropriateness Criteria, the presence of progressive motor weakness (extensor hallucis longus 4/5) qualifies as a clinical exception waiving any prior conservative therapy requirement due to risk of permanent neurological deficit.",
+    "statutory_citations": [
+      "29 U.S.C. § 1133 (ERISA § 503 Full and Fair Review)",
+      "29 C.F.R. § 2560.503-1(h)(3)(iii) (Consultation with independent health care professional with appropriate training)",
+      "ACA Section 2719 (42 U.S.C. § 300gg-19)"
+    ]
+  },
+  "J0135": {
+    "cpt_code": "J0135",
+    "description": "Adalimumab (Humira)",
+    "guideline_authority": "American College of Gastroenterology (ACG) Clinical Guidelines for Crohn's Disease",
+    "medical_necessity_criteria": [
+      "Moderate to severely active Crohn's disease with documented mucosal inflammation.",
+      "Step therapy override is clinically warranted when preferred agents are medically contraindicated, caused prior adverse reactions, or are clinically ineffective."
+    ],
+    "appeal_argument_template": "The denial based on fail-first step therapy violates standard clinical care and plan fiduciary duties. Under ACG Clinical Guidelines and state/federal step therapy exception statutes, step therapy must be overridden when the preferred alternatives are clinically contraindicated. Patient previously suffered documented drug-induced hepatotoxicity from azathioprine and pancytopenia from methotrexate. Forcing re-trial of toxic agents violates medical safety.",
+    "statutory_citations": [
+      "29 U.S.C. § 1104(a)(1)(A) (ERISA Fiduciary Duty of Prudence)",
+      "29 C.F.R. § 2560.503-1(h)(2)(iv) (Entitlement to all internal criteria and rules relied upon)"
+    ]
+  }
+}
