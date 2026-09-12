@@ -1,4 +1,4 @@
-"""ClaimGuard Patient Advocate Web Portal — FastAPI."""
+"""ClaimWard Patient Advocate Web Portal — FastAPI."""
 from __future__ import annotations
 
 import json
@@ -18,7 +18,7 @@ SRC_DIR = Path(__file__).resolve().parent
 STATIC_DIR = SRC_DIR / "static"
 AUDIT_PATH = Path("data/evidence/audit_trail.jsonl")
 
-app = FastAPI(title="ClaimGuard Patient Advocate Portal")
+app = FastAPI(title="ClaimWard Patient Advocate Portal")
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 
@@ -29,7 +29,7 @@ def index() -> FileResponse:
 
 @app.get("/api/health")
 def health() -> dict[str, Any]:
-    return {"status": "ok", "agent": "claimguard"}
+    return {"status": "ok", "agent": "claimward"}
 
 
 @app.post("/api/denials/analyze")
