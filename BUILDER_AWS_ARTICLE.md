@@ -1,6 +1,6 @@
 # Building an Autonomous Patient Advocate with Strands Agents SDK, Amazon Bedrock, and Cedar Zero-Trust Policies
 
-*Inside ClaimGuard: an agent that deciphers insurance denials, matches CMS clinical criteria, drafts statutory ERISA § 503 appeals — and structurally cannot submit anything without the patient's cryptographic signature.*
+*Inside ClaimWard: an agent that deciphers insurance denials, matches CMS clinical criteria, drafts statutory ERISA § 503 appeals — and structurally cannot submit anything without the patient's cryptographic signature.*
 
 ---
 
@@ -12,7 +12,7 @@ Why the gap? A winning appeal is a *legal document wrapped around a clinical arg
 
 That machinery is exactly what an LLM agent can assemble. But it raises the human question every agentic system must answer: **what do we do about the part only a human may do?** An appeal is a sworn medical statement in the patient's name. No agent should submit one autonomously.
 
-This article shows how ClaimGuard answers it with the Strands Agents SDK's hook system and Cedar: the agent drafts everything, and the *architecture itself* forbids it from signing or submitting.
+This article shows how ClaimWard answers it with the Strands Agents SDK's hook system and Cedar: the agent drafts everything, and the *architecture itself* forbids it from signing or submitting.
 
 ## The architecture in one paragraph
 
@@ -24,7 +24,7 @@ The non-obvious Strands trick: hooks are *mutable and orderable*. Registering at
 
 ```python
 # src/gateway.py
-class ClaimGuardGatewayHook:
+class ClaimWardGatewayHook:
     """Zero-trust Strands hook provider (Cedar + zn + SHA-256 audit vault)."""
 
     def register_hooks(self, registry) -> None:
@@ -39,7 +39,7 @@ class ClaimGuardGatewayHook:
         verdict = self.inspect(name, tool_args)
         if verdict["decision"] == "DENY":
             event.cancel_tool = (
-                f"DENIED by ClaimGuard zero-trust gateway: {verdict['reason']} "
+                f"DENIED by ClaimWard zero-trust gateway: {verdict['reason']} "
                 f"[rule: {verdict.get('rule')}]"
             )
 ```
@@ -149,7 +149,7 @@ def evaluate_appeal_policy(action: str, resource_data: dict, context_data: dict)
 
 ## The signature chain: approval bound to exact bytes
 
-The subtle trust problem in HITL: an approval stored as "appeal X approved" is forgeable — a later call with *different* arguments rides the old approval. ClaimGuard binds the token to the draft's hash:
+The subtle trust problem in HITL: an approval stored as "appeal X approved" is forgeable — a later call with *different* arguments rides the old approval. ClaimWard binds the token to the draft's hash:
 
 ```python
 # src/hitl.py
@@ -242,6 +242,8 @@ The AgentCore ARM64 container image is ready; the FastAPI patient portal (dark o
 uvicorn src.dashboard:app --host 0.0.0.0 --port 8080
 ```
 
+The live deployment runs at **https://claimward.usezn.com**.
+
 Next on the list: fax/email delivery into real insurer claims queues, a treating-physician counter-signature chain, external-review escalation under ACA § 2719, and expanding the CMS NCD/LCD guideline coverage.
 
 ## Takeaways for agent builders
@@ -253,4 +255,4 @@ Next on the list: fax/email delivery into real insurer claims queues, a treating
 
 ---
 
-*ClaimGuard is MIT-licensed: [github.com/tljohnsilver/claimward](https://github.com/tljohnsilver/claimward) — built for the AWS "Agents for Humans" hackathon (Everyday Agents / Good Neighbor track).*
+*ClaimWard is MIT-licensed: [github.com/tljohnsilver/claimward](https://github.com/tljohnsilver/claimward) — built for the AWS "Agents for Humans" hackathon (Everyday Agents / Good Neighbor track).*

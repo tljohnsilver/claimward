@@ -1,9 +1,9 @@
-"""ClaimGuard Zero-Trust Gateway — Strands hook backed by Cedar + Rust zn.
+"""ClaimWard Zero-Trust Gateway — Strands hook backed by Cedar + Rust zn.
 
 Every tool call is intercepted at BeforeToolCallEvent (registered at
 HookOrder.SDK_FIRST - 1, before any SDK hook) and evaluated against:
   1. The Rust `zn analyze` argument scanner (when available) — fail-closed.
-  2. ClaimGuard Cedar policies — unsigned submissions DENIED, unredacted
+  2. ClaimWard Cedar policies — unsigned submissions DENIED, unredacted
      PHI DENIED, deadline-expired appeals DENIED.
 Every decision is appended to data/evidence/audit_trail.jsonl with the
 SHA-256 of the exact tool-call arguments.
@@ -81,7 +81,7 @@ def _resource_data(tool_name: str, tool_args: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-class ClaimGuardGatewayHook:
+class ClaimWardGatewayHook:
     """Zero-trust Strands hook provider (Cedar + zn + SHA-256 audit vault)."""
 
     def __init__(self, audit_path: Path | str | None = None, use_zn: bool = True, timeout: float = 5.0) -> None:
@@ -167,7 +167,7 @@ class ClaimGuardGatewayHook:
 
         verdict = self.inspect(name, tool_args)
         if verdict["decision"] == "DENY":
-            event.cancel_tool = f"DENIED by ClaimGuard zero-trust gateway: {verdict['reason']} [rule: {verdict.get('rule')}]"
+            event.cancel_tool = f"DENIED by ClaimWard zero-trust gateway: {verdict['reason']} [rule: {verdict.get('rule')}]"
 
     def on_after_tool_call(self, event: Any) -> None:
         pass  # result sanitization reserved for future hardening

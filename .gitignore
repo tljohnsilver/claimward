@@ -20,3 +20,6 @@ vendor/zn/target/
 data/evidence/appeals.jsonl
 data/evidence/pending_signatures.json
 data/evidence/submitted_appeals.json
+
+# Staging binary for Docker build (59MB)
+/zn

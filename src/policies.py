@@ -1,4 +1,4 @@
-"""Cedar policy layer for ClaimGuard — deterministic evaluation via cedarpy.
+"""Cedar policy layer for ClaimWard — deterministic evaluation via cedarpy.
 
 Loads src/policies/policies.cedar and evaluates tool calls against the
 zero-trust patient-protection gate. Falls back to a minimal deterministic
@@ -75,7 +75,7 @@ def _fallback_evaluate(action: str, resource_data: dict[str, Any], context_data:
 
 
 def evaluate_appeal_policy(action: str, resource_data: dict[str, Any], context_data: dict[str, Any]) -> dict[str, Any]:
-    """Evaluate a tool call against ClaimGuard Cedar policies.
+    """Evaluate a tool call against ClaimWard Cedar policies.
 
     Args:
         action: tool name, e.g. "submit_appeal_package".

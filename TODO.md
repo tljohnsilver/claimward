@@ -1,9 +1,9 @@
-# ClaimGuard: Implementation Roadmap & Execution Checklist (TODO.md)
+# ClaimWard: Implementation Roadmap & Execution Checklist (TODO.md)
 
 **Target Directory:** `/home/ubuntu/claimguard`  
 **Engineer:** GLM 5.3-Flash (OpenCode)  
 **Master Architect:** Antigravity  
-**Goal:** Build and verify ClaimGuard with 100% passing tests, beautiful UI, and complete Devpost submission package.
+**Goal:** Build and verify ClaimWard with 100% passing tests, beautiful UI, and complete Devpost submission package.
 
 ---
 
@@ -39,7 +39,7 @@
     4. `request_patient_signature(appeal_id: str, appeal_draft: str)`
     5. `submit_appeal_package(appeal_id: str, recipient: str, signature_token: str)`
 - [ ] Create `src/gateway.py`:
-  - Strands Hook (`ClaimGuardGatewayHook`) inheriting from `Hook` or wrapping `BeforeToolCallEvent` / `AfterToolCallEvent` (Order: `SDK_FIRST - 1`).
+  - Strands Hook (`ClaimWardGatewayHook`) inheriting from `Hook` or wrapping `BeforeToolCallEvent` / `AfterToolCallEvent` (Order: `SDK_FIRST - 1`).
   - Intercepts calls, validates against Cedar and Rust `zn analyze`, appends to SHA-256 evidence vault.
 - [ ] Create `src/hitl.py`:
   - Manages pending patient approvals, validates cryptographic SHA-256 tokens.
@@ -69,7 +69,7 @@
 
 ## Phase 5: Hackathon Submission Artifacts
 - [ ] Create `README.md`:
-  - Empathy-first presentation of ClaimGuard, the $220B medical debt problem, ProPublica investigative context, architecture diagram, tech stack, and quickstart.
+  - Empathy-first presentation of ClaimWard, the $220B medical debt problem, ProPublica investigative context, architecture diagram, tech stack, and quickstart.
 - [ ] Create `DEVPOST_SUBMISSION.md`:
   - Full Devpost form fields: Tagline, Inspiration, What it does, How we built it, Challenges, Accomplishments, What we learned, What's next.
 - [ ] Create `VIDEO_SCRIPT.md`:

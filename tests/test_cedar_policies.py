@@ -1,4 +1,4 @@
-"""Cedar policy tests — ClaimGuard zero-trust gates."""
+"""Cedar policy tests — ClaimWard zero-trust gates."""
 from __future__ import annotations
 
 from src.policies import evaluate_appeal_policy

@@ -1,4 +1,4 @@
-"""ClaimGuard core data models (Pydantic v2)."""
+"""ClaimWard core data models (Pydantic v2)."""
 from __future__ import annotations
 
 from typing import Any, Optional

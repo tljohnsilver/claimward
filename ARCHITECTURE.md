@@ -1,6 +1,6 @@
-# ClaimGuard: Architectural Blueprint & System Design
+# ClaimWard: Architectural Blueprint & System Design
 
-**Project:** ClaimGuard (The Autonomous Medical Claim & Prior-Auth Patient Advocate)  
+**Project:** ClaimWard (The Autonomous Medical Claim & Prior-Auth Patient Advocate)  
 **Hackathon:** AWS "Agents for Humans" (Everyday Agents / Good Neighbor Track)  
 **Core Technologies:** Strands Agents SDK, Amazon Bedrock (Nova Micro / Claude 3.5 Sonnet), AgentCore Runtime, Cedar Policies (`cedarpy`), Rust Deterministic Safety Gateway (`zn`), FastAPI.
 
@@ -15,7 +15,7 @@ Concurrently:
 - **99.8% of denied patients never appeal** because the process is deliberately complex, requiring CPT/ICD-10 clinical coding, medical necessity guidelines, and statutory filings under ERISA.
 - Yet, when formal appeals are filed with clinical evidence and legal citations, **between 60% and 90% of denials are overturned**.
 
-**ClaimGuard** levels the playing field. It is an autonomous patient advocate agent that:
+**ClaimWard** levels the playing field. It is an autonomous patient advocate agent that:
 1. **Ingests & Deciphers Denial Letters (EOBs)**: Extracts claim numbers, procedure codes (CPT), diagnosis codes (ICD-10), billed amounts, and statutory deadlines (180 days under ERISA).
 2. **Retrieves Clinical Guidelines**: Cross-references CMS National Coverage Determinations (NCDs) and commercial medical necessity criteria.
 3. **Drafts Statutory ERISA § 503 Appeal Packages**: Generates legally binding, medically rigorous appeal packages citing 29 C.F.R. § 2560.503-1.
@@ -31,7 +31,7 @@ Concurrently:
 ```mermaid
 flowchart TD
     subgraph Ingestion ["1. Patient Ingestion"]
-        P["Patient / Family Member"] -->|"Uploads Denial Letter (EOB/PDF/Text)"| UI["ClaimGuard Patient Portal (FastAPI)"]
+        P["Patient / Family Member"] -->|"Uploads Denial Letter (EOB/PDF/Text)"| UI["ClaimWard Patient Portal (FastAPI)"]
     end
 
     subgraph AgenticCore ["2. Strands Agents SDK + Amazon Bedrock"]

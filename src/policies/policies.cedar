@@ -1,4 +1,4 @@
-// ClaimGuard Cedar Policies — Zero-Trust Patient Advocacy Gate
+// ClaimWard Cedar Policies — Zero-Trust Patient Advocacy Gate
 // Protects patients against unauthorized appeal submissions and HIPAA privacy leaks.
 
 // 1. Permit non-destructive clinical analysis and appeal drafting tools

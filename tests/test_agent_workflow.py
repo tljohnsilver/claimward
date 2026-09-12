@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src import hitl
 from src.agent import run_patient_appeal_cycle
-from src.gateway import ClaimGuardGatewayHook
+from src.gateway import ClaimWardGatewayHook
 from src.policies import load_audit_entries
 
 SAMPLE = "denial_01_mri_lumbar.json"
@@ -99,7 +99,7 @@ def test_hitl_token_verification_and_rejection():
 
 
 def test_gateway_denies_unsigned_submit_and_logs_audit():
-    hook = ClaimGuardGatewayHook(audit_path="data/evidence/audit_trail.jsonl")
+    hook = ClaimWardGatewayHook(audit_path="data/evidence/audit_trail.jsonl")
     verdict = hook.inspect("submit_appeal_package", {"appeal_id": "APP-DEN-2026-0842", "signature_token": ""})
     assert verdict["decision"] == "DENY"
     entries = load_audit_entries(limit=5, audit_path="data/evidence/audit_trail.jsonl")
@@ -110,7 +110,7 @@ def test_gateway_denies_unsigned_submit_and_logs_audit():
 
 
 def test_gateway_detects_unredacted_phi():
-    hook = ClaimGuardGatewayHook(audit_path="data/evidence/audit_trail.jsonl")
+    hook = ClaimWardGatewayHook(audit_path="data/evidence/audit_trail.jsonl")
     verdict = hook.inspect(
         "draft_erisa_appeal",
         {"denial_json": "{}", "clinical_evidence": "{}", "patient_notes": "SSN 123-45-6789"},

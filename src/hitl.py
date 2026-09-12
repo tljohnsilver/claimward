@@ -1,4 +1,4 @@
-"""HITL — patient signature gate for ClaimGuard.
+"""HITL — patient signature gate for ClaimWard.
 
 Issues and verifies SHA-256 signature tokens for approved patient sign-offs.
 Pending records: data/evidence/pending_signatures.json (JSONL).

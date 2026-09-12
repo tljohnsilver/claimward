@@ -1,4 +1,4 @@
-"""ClaimGuard Strands SDK tools — autonomous patient advocate workflow."""
+"""ClaimWard Strands SDK tools — autonomous patient advocate workflow."""
 from __future__ import annotations
 
 import datetime
@@ -214,7 +214,7 @@ Respectfully submitted,
 ______________________________
 {d.get('patient_name', 'Patient')} — Patient Signature (cryptographic SHA-256 attestation attached)
 
-*Drafted autonomously by ClaimGuard from verified clinical guidelines. Reviewed and cryptographically signed by the patient before submission.*"""
+*Drafted autonomously by ClaimWard from verified clinical guidelines. Reviewed and cryptographically signed by the patient before submission.*"""
 
 
 @tool

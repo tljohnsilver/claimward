@@ -2,11 +2,15 @@
 
 ## Project Title
 
-**ClaimGuard: The Autonomous Patient Advocate That Fights Algorithmic Insurance Denials**
+**ClaimWard: The Autonomous Patient Advocate That Fights Algorithmic Insurance Denials**
 
 ## Tagline (<200 chars)
 
 An autonomous agent that deciphers denials, matches CMS clinical criteria, drafts the ERISA § 503 appeal — and never submits without the patient's cryptographic signature.
+
+## Try it out
+
+Live at: https://claimward.usezn.com
 
 ## Inspiration
 
@@ -20,7 +24,7 @@ But families can't just outsource the fight to a bot. An appeal is a sworn medic
 
 ## What it does
 
-ClaimGuard runs a 5-stage autonomous advocacy workflow:
+ClaimWard runs a 5-stage autonomous advocacy workflow:
 
 1. **Deciphers the denial letter** — extracts claim number, CPT/ICD-10 codes, billed amount, denial reason, and the 180-day ERISA filing deadline from raw letter text or structured records.
 2. **Retrieves the clinical standard** — matches the denied procedure (CPT 72148 lumbar MRI, J0135 Humira, …) against CMS NCD/LCD and specialty-society medical-necessity criteria, finding the exact criteria the insurer's own denial logic must meet.
@@ -32,7 +36,7 @@ Demo: a Cigna PxDx-style denial of a $4,850 lumbar MRI (patient completed 8 week
 
 ## How we built it
 
-- **Strands Agents SDK** as the agent backbone: a Bedrock-backed `Agent` with five tools (`parse_denial_letter`, `query_clinical_criteria`, `draft_erisa_appeal`, `request_patient_signature`, `submit_appeal_package`). Our `ClaimGuardGatewayHook` registers **`BeforeToolCallEvent` at `HookOrder.SDK_FIRST - 1`** — before every SDK hook — so the zero-trust gate evaluates the decision exactly when the LLM's intent becomes an action, and cancels the call if policy says no.
+- **Strands Agents SDK** as the agent backbone: a Bedrock-backed `Agent` with five tools (`parse_denial_letter`, `query_clinical_criteria`, `draft_erisa_appeal`, `request_patient_signature`, `submit_appeal_package`). Our `ClaimWardGatewayHook` registers **`BeforeToolCallEvent` at `HookOrder.SDK_FIRST - 1`** — before every SDK hook — so the zero-trust gate evaluates the decision exactly when the LLM's intent becomes an action, and cancels the call if policy says no.
 - **Amazon Bedrock (Nova Micro)** for reasoning over denial letters and clinical criteria.
 - **Cedar policies** (`cedarpy` 4.8.7) as authorization-as-code: unsigned submissions and deadline-expired appeals are forbidden; `context.phi_unredacted == true` denies *any* action (HIPAA gate); a complementary permit policy allows signed, timely submissions.
 - **A Rust deterministic gateway (`zn`)** scans tool-call arguments (fail-closed) as the outer layer before Cedar evaluation.

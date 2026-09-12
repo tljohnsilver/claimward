@@ -1,10 +1,12 @@
 ![ClaimWard](docs/assets/logo.jpg)
 
-# ClaimGuard (ClaimWard): The Autonomous Patient Advocate That Fights Algorithmic Insurance Denials
+**🔗 Live Demo: [claimward.usezn.com](https://claimward.usezn.com)**
+
+# ClaimWard — The Autonomous Patient Advocate
 
 > **Researches clinical guidelines, drafts the formal ERISA § 503 appeal, and never submits a single word without the patient's cryptographic signature.**
 
-🎥 **Video demo:** *coming — see VIDEO_SCRIPT.md* · 🌐 **Live portal:** run locally in 60 seconds (Quickstart below)
+🎥 **Video demo:** *coming — see VIDEO_SCRIPT.md* · 🌐 **Run locally:** 60-second Quickstart below
 
 ![tests](https://img.shields.io/badge/tests-passing-brightgreen) ![agentcore](https://img.shields.io/badge/AgentCore_Ready-ARM64-green) ![strands](https://img.shields.io/badge/Strands_Agents_SDK-✓-blue) ![bedrock](https://img.shields.io/badge/AWS_Bedrock-Nova_Micro-orange) ![cedar](https://img.shields.io/badge/Cedar_Policies-zero__trust-blueviolet) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
@@ -26,7 +28,7 @@ American families are being crushed by a system that denies care by algorithm:
 
 The appeal letter that wins is a *legal document wrapped around a clinical argument*: cite 29 U.S.C. § 1133 (ERISA § 503), demand the reviewer's credentials under 29 C.F.R. § 2560.503-1(h)(2)(iii), cite the CMS LCD or specialty-society criteria the denial ignored. Stressed families have neither the codes, the citations, nor the energy.
 
-**And they cannot hand the job fully to an AI** — an appeal is a sworn medical statement bearing their name. Unsupervised, an agent could submit something wrong, or transmit unredacted health identifiers. So ClaimGuard is built on a rule as strict as the law it cites:
+**And they cannot hand the job fully to an AI** — an appeal is a sworn medical statement bearing their name. Unsupervised, an agent could submit something wrong, or transmit unredacted health identifiers. So ClaimWard is built on a rule as strict as the law it cites:
 
 **The agent can do everything except the one thing only the patient may do: sign.**
 
@@ -34,7 +36,7 @@ The appeal letter that wins is a *legal document wrapped around a clinical argum
 
 ## The Solution
 
-ClaimGuard is an autonomous patient advocate agent built with the **Strands Agents SDK** and **Amazon Bedrock**:
+ClaimWard is an autonomous patient advocate agent built with the **Strands Agents SDK** and **Amazon Bedrock**:
 
 1. **Deciphers the denial letter** — extracts claim number, CPT/ICD-10 codes, billed amount, denial reason, and the 180-day ERISA filing deadline.
 2. **Retrieves the clinical standard** — matches the denied procedure against CMS NCD/LCD and specialty-society medical-necessity criteria and finds the exact criteria the insurer's own logic must meet.

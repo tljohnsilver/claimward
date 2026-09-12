@@ -1,4 +1,4 @@
-"""ClaimGuard agent factory + deterministic patient-appeal cycle."""
+"""ClaimWard agent factory + deterministic patient-appeal cycle."""
 from __future__ import annotations
 
 import json
@@ -8,7 +8,7 @@ from pathlib import Path
 from strands import Agent
 from strands.models import BedrockModel
 
-from src.gateway import ClaimGuardGatewayHook
+from src.gateway import ClaimWardGatewayHook
 from src.tools import (
     draft_erisa_appeal,
     parse_denial_letter,
@@ -18,7 +18,7 @@ from src.tools import (
 )
 
 SYSTEM_PROMPT = (
-    "You are ClaimGuard, an autonomous patient advocate fighting algorithmic insurance denials.\n"
+    "You are ClaimWard, an autonomous patient advocate fighting algorithmic insurance denials.\n"
     "Workflow for each denial:\n"
     "1. parse_denial_letter to extract claim, CPT/ICD-10 codes, amounts, and the ERISA deadline.\n"
     "2. query_clinical_criteria for the denied procedure's CMS/LCD medical-necessity criteria.\n"
@@ -35,7 +35,7 @@ SAMPLES_PATH = Path("data/sample_denials")
 def build_claimguard_agent(evidence_path: str | None = None) -> Agent:
     """Create the configured Strands Agent with the zero-trust gateway hook."""
     model = BedrockModel(model_id="us.amazon.nova-micro-v1:0", region_name=os.environ.get("AWS_REGION", "us-east-1"))
-    gateway = ClaimGuardGatewayHook(audit_path=evidence_path or "data/evidence/audit_trail.jsonl")
+    gateway = ClaimWardGatewayHook(audit_path=evidence_path or "data/evidence/audit_trail.jsonl")
     return Agent(
         model=model,
         system_prompt=SYSTEM_PROMPT,

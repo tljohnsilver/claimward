@@ -1,1 +1,1 @@
-"""ClaimGuard — autonomous patient advocate agent."""
+"""ClaimWard — autonomous patient advocate agent."""

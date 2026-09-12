@@ -1,6 +1,8 @@
-# Video Script — ClaimGuard (3 minutes)
+# Video Script — ClaimWard (3 minutes)
 
-**Title:** ClaimGuard: The Autonomous Patient Advocate That Fights Algorithmic Insurance Denials
+**Live Demo:** https://claimward.usezn.com
+
+**Title:** ClaimWard: The Autonomous Patient Advocate That Fights Algorithmic Insurance Denials
 **Length:** 3:00 · **Format:** screen capture + VO — patient portal (localhost:8080) + terminal
 **Brand:** Deep Obsidian Navy (#0B0F19) · Trust Cobalt Blue (#2563EB) · Healing Teal (#0D9488)
 
@@ -30,13 +32,13 @@
 
 **VO:**
 
-> Meet ClaimGuard. Sarah Jenkins — Cigna denied her $4,850 lumbar MRI. PxDx's stated reason: "no documented 6 weeks of conservative therapy."
+> Meet ClaimWard. Sarah Jenkins — Cigna denied her $4,850 lumbar MRI. PxDx's stated reason: "no documented 6 weeks of conservative therapy."
 >
 > Watch the agent work. Stage one: it parses the letter — CPT 72148, diagnosis M54.51, billed amount, and the ERISA deadline. Stage two: it queries the CMS LCD guidelines and finds the exact criteria — including the exception Cigna's denial ignored: *progressive motor weakness waives the conservative-therapy requirement*.
 >
 > Sarah has exactly that. Eight weeks of failed physical therapy — documented — plus 4/5 motor weakness in her left foot.
 >
-> Stage three: ClaimGuard drafts the formal appeal. Two pages, statutory form — citing ERISA, 29 U.S.C. § 1133, demanding Cigna hand over its reviewer's credentials under 29 C.F.R. § 2560.503-1.
+> Stage three: ClaimWard drafts the formal appeal. Two pages, statutory form — citing ERISA, 29 U.S.C. § 1133, demanding Cigna hand over its reviewer's credentials under 29 C.F.R. § 2560.503-1.
 
 **ON SCREEN:** timeline steps [1→2→3] turning teal; letter preview scrolling with statutory headings.
 
@@ -84,7 +86,7 @@
 >
 > Full automated test suite: all green — policy matrix and end-to-end cycles, no cloud credentials needed.
 >
-> ClaimGuard: research the guidelines. Draft the appeal. **But never sign — that right belongs to the patient.**
+> ClaimWard: research the guidelines. Draft the appeal. **But never sign — that right belongs to the patient.**
 
 **ON SCREEN:** "Strands Agents SDK · Amazon Bedrock · Cedar · AgentCore" · repo link.
 
