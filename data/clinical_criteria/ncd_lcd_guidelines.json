@@ -10,9 +10,9 @@
     ],
     "appeal_argument_template": "The adverse determination citing lack of conservative therapy is clinically unfounded. As documented in clinical records, patient completed 8 weeks of supervised physical therapy without resolution. Furthermore, under ACR Appropriateness Criteria, the presence of progressive motor weakness (extensor hallucis longus 4/5) qualifies as a clinical exception waiving any prior conservative therapy requirement due to risk of permanent neurological deficit.",
     "statutory_citations": [
-      "29 U.S.C. § 1133 (ERISA § 503 Full and Fair Review)",
-      "29 C.F.R. § 2560.503-1(h)(3)(iii) (Consultation with independent health care professional with appropriate training)",
-      "ACA Section 2719 (42 U.S.C. § 300gg-19)"
+      "29 U.S.C. \u00a7 1133 (ERISA \u00a7 503 Full and Fair Review)",
+      "29 C.F.R. \u00a7 2560.503-1(h)(3)(iii) (Consultation with independent health care professional with appropriate training)",
+      "ACA Section 2719 (42 U.S.C. \u00a7 300gg-19)"
     ]
   },
   "J0135": {
@@ -25,8 +25,24 @@
     ],
     "appeal_argument_template": "The denial based on fail-first step therapy violates standard clinical care and plan fiduciary duties. Under ACG Clinical Guidelines and state/federal step therapy exception statutes, step therapy must be overridden when the preferred alternatives are clinically contraindicated. Patient previously suffered documented drug-induced hepatotoxicity from azathioprine and pancytopenia from methotrexate. Forcing re-trial of toxic agents violates medical safety.",
     "statutory_citations": [
-      "29 U.S.C. § 1104(a)(1)(A) (ERISA Fiduciary Duty of Prudence)",
-      "29 C.F.R. § 2560.503-1(h)(2)(iv) (Entitlement to all internal criteria and rules relied upon)"
+      "29 U.S.C. \u00a7 1104(a)(1)(A) (ERISA Fiduciary Duty of Prudence)",
+      "29 C.F.R. \u00a7 2560.503-1(h)(2)(iv) (Entitlement to all internal criteria and rules relied upon)"
+    ]
+  },
+  "45380": {
+    "cpt_code": "45380",
+    "description": "Colonoscopy, flexible; with biopsy",
+    "guideline_authority": "ACA Preventive Services Mandate (42 U.S.C. 300gg-11) / IRS Notice 2013-35 / USPSTF",
+    "medical_necessity_criteria": [
+      "Screening colonoscopy for asymptomatic adults age 45-75 is a mandated preventive service with zero patient cost-sharing (ACA 2719 / 42 U.S.C. 300gg-11).",
+      "The screening indication (ICD-10 Z12.11) governs cost-sharing rules regardless of incidental interventions during the encounter.",
+      "Polypectomy or biopsy during a screening encounter does not retroactively convert the service to diagnostic."
+    ],
+    "appeal_argument_template": "The denial misapplied cost-sharing to a preventive service. Under the ACA preventive-services mandate (42 U.S.C. 300gg-11) and IRS Notice 2013-35, in-network screening colonoscopies for eligible adults must be covered without deductible or copayment. The screening indication (Z12.11) was documented at the time of service; coding of incidental same-encounter interventions does not alter the benefit category.",
+    "statutory_citations": [
+      "42 U.S.C. 300gg-11 (ACA preventive services mandate)",
+      "IRS Notice 2013-35 (FAQ about preventive care cost-sharing)",
+      "29 C.F.R. 2560.503-1 (ERISA full and fair review)"
     ]
   }
 }

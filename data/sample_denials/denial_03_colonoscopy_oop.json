@@ -1,0 +1,23 @@
+{
+  "denial_id": "DEN-2026-1507",
+  "patient_name": "Dana Whitfield",
+  "patient_dob": "1965-02-03",
+  "insurer": "Aetna",
+  "claim_number": "AET-55103-C",
+  "date_of_service": "2026-08-05",
+  "denial_date": "2026-08-20",
+  "erisa_deadline_days": 180,
+  "filing_deadline_date": "2027-02-01",
+  "cpt_code": "45380",
+  "cpt_description": "Colonoscopy, flexible; with biopsy, single or multiple specimens",
+  "icd10_code": "Z12.11",
+  "icd10_description": "Encounter for screening for malignant neoplasm of colon",
+  "billed_amount_cents": 285000,
+  "denial_code": "PR-1",
+  "denial_reason": "Deductible Not Met / Preventive benefit misapplied: claim processed against deductible because procedure was coded as diagnostic rather than screening despite Z12.11 screening indication.",
+  "clinical_facts": {
+    "treating_physician": "Dr. Priya Natarajan, MD (Gastroenterology)",
+    "documentation": "Screening colonoscopy for asymptomatic patient age 58 under ACA preventive-services mandate (42 U.S.C. § 300gg-11); no copayment or deductible may be applied to in-network preventive colonoscopy. Polypectomy performed during the same encounter does not retroactively convert the indication.",
+    "regulatory_note": "IRS Notice 2013-35 / ACA Section 2719: cost-sharing cannot be applied to preventive screenings; coding-based deductible denial is inconsistent with plan terms and federal guidance."
+  }
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClaimGuard — Autonomous Patient Advocate</title>
+<link rel="icon" type="image/png" href="/static/favicon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: { colors: {
+    obsidian: '#0B0F19',
+    cobalt: '#2563EB',
+    healing: '#0D9488',
+  }}}
+}
+</script>
+<style>
+  body { background:#0B0F19; color:#E2E8F0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .card { background:#111827; border:1px solid #1F2937; border-radius:0.75rem; }
+  .accent-glow { box-shadow: 0 0 24px rgba(37,99,235,0.25); }
+  .letter { white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:0.82rem; line-height:1.5; max-height:26rem; overflow-y:auto; }
+  .step-done { background:#0D9488; color:#fff; border-color:#0D9488; }
+  .step-active { background:#2563EB; color:#fff; border-color:#2563EB; }
+  .step-todo { background:#0B0F19; color:#64748B; border-color:#334155; }
+  .fade-in { animation: fadein .4s ease; }
+  @keyframes fadein { from {opacity:0; transform:translateY(6px);} to {opacity:1; transform:none;} }
+  .hash { font-family: ui-monospace, monospace; font-size:0.7rem; color:#0D9488; word-break: break-all; }
+  .denied { color:#F87171; }
+  .allowed { color:#34D399; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- Navbar -->
+<nav class="border-b border-gray-800 bg-[#0B0F19]/90 backdrop-blur sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+    <img src="/static/logo.jpg" alt="ClaimWard" class="h-10 object-contain">
+    <div>
+      <h1 class="text-lg font-semibold tracking-tight">Claim<span class="text-cobalt">Guard</span></h1>
+      <p class="text-xs text-slate-400">Fighting algorithmic insurance denials with autonomous patient advocacy</p>
+    </div>
+    <div class="ml-auto flex items-center gap-4 text-xs text-slate-400">
+      <span class="hidden sm:inline">ERISA § 503 · Cedar Zero-Trust · HITL</span>
+      <span id="healthDot" class="inline-block w-2.5 h-2.5 rounded-full bg-slate-600"></span>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+
+  <!-- Hero + Metrics -->
+  <section class="space-y-4">
+    <h2 class="text-2xl sm:text-3xl font-bold leading-snug">
+      Your claim was denied by an algorithm.<br>
+      <span class="text-healing">Now an agent fights back for you — and you hold the final signature.</span>
+    </h2>
+    <p class="text-slate-400 max-w-3xl text-sm leading-relaxed">
+      Insurers deny 12–18% of prior authorizations — some in 1.2 seconds, reviewed by no physician.
+      99.8% of patients never appeal, even though 60–90% of appealed denials are overturned.
+      ClaimGuard researches the clinical guidelines, drafts the formal ERISA appeal, and never submits
+      anything without your cryptographic signature.
+    </p>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div class="card p-4 accent-glow"><div class="text-2xl font-bold text-cobalt">$220B</div><div class="text-xs text-slate-400 mt-1">US medical debt crisis</div></div>
+      <div class="card p-4"><div class="text-2xl font-bold text-cobalt">49M</div><div class="text-xs text-slate-400 mt-1">Claim denials / year</div></div>
+      <div class="card p-4"><div class="text-2xl font-bold text-healing">99.8%</div><div class="text-xs text-slate-400 mt-1">Denials never appealed</div></div>
+      <div class="card p-4"><div class="text-2xl font-bold text-healing">60–90%</div><div class="text-xs text-slate-400 mt-1">Win rate on appeal</div></div>
+    </div>
+  </section>
+
+  <!-- Demo Panel -->
+  <section class="card p-6 space-y-4">
+    <div class="flex items-center justify-between flex-wrap gap-2">
+      <h3 class="font-semibold text-lg">Try it now — load a real denial pattern</h3>
+      <span class="text-xs text-slate-500">Demo data · no PHI is transmitted anywhere</span>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <button onclick="loadSample('denial_01_mri_lumbar')"
+        class="px-4 py-2.5 rounded-lg bg-cobalt hover:bg-blue-700 transition text-white text-sm font-medium">
+        Sample 1: Cigna Lumbar MRI Denial ($4,850)
+      </button>
+      <button onclick="loadSample('denial_02_biologic_humira')"
+        class="px-4 py-2.5 rounded-lg bg-healing hover:bg-teal-700 transition text-white text-sm font-medium">
+        Sample 2: UnitedHealth Humira Step Therapy ($18,500)
+      </button>
+    </div>
+
+    <!-- Workflow Timeline -->
+    <div id="timeline" class="hidden grid grid-cols-1 sm:grid-cols-5 gap-2 pt-2">
+      <div id="step1" class="step-todo border rounded-lg p-3 text-xs font-medium text-center">1. Ingestion<br><span class="opacity-70">Decipher denial</span></div>
+      <div id="step2" class="step-todo border rounded-lg p-3 text-xs font-medium text-center">2. Clinical Guidelines Match</div>
+      <div id="step3" class="step-todo border rounded-lg p-3 text-xs font-medium text-center">3. ERISA Appeal Drafted</div>
+      <div id="step4" class="step-todo border rounded-lg p-3 text-xs font-medium text-center">4. Patient Review & Sign (HITL)</div>
+      <div id="step5" class="step-todo border rounded-lg p-3 text-xs font-medium text-center">5. Submitted</div>
+    </div>
+    <div id="denialFacts" class="hidden text-sm text-slate-300"></div>
+  </section>
+
+  <!-- Patient Review & Sign -->
+  <section id="signSection" class="card p-6 space-y-4 hidden fade-in border-healing">
+    <div class="flex items-start justify-between flex-wrap gap-2">
+      <div>
+        <h3 class="font-semibold text-lg">Review & Sign Your Appeal</h3>
+        <p class="text-xs text-slate-400">Nothing leaves your hands until you sign. The agent cannot submit without your cryptographic signature (Cedar-enforced).</p>
+      </div>
+      <span id="deadlineBadge" class="text-xs px-3 py-1.5 rounded-full bg-cobalt/20 text-cobalt font-medium"></span>
+    </div>
+    <div id="appealLetter" class="card p-4 letter bg-[#0B0F19]"></div>
+    <div id="policyNote" class="text-xs text-slate-400 hidden"></div>
+    <button id="signBtn" onclick="signAppeal()"
+      class="w-full sm:w-auto px-6 py-3 rounded-lg bg-healing hover:bg-teal-700 transition font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed">
+      Review & Cryptographically Sign Appeal
+    </button>
+    <div id="signResult" class="hidden text-sm"></div>
+  </section>
+
+  <!-- Evidence Vault -->
+  <section class="card p-6 space-y-3">
+    <div class="flex items-center justify-between">
+      <h3 class="font-semibold">Evidence Vault — live Cedar verdicts</h3>
+      <button onclick="loadEvidence()" class="text-xs text-cobalt hover:underline">Refresh</button>
+    </div>
+    <div id="evidenceLog" class="space-y-1.5 max-h-72 overflow-y-auto font-mono text-xs"></div>
+  </section>
+
+  <footer class="text-center text-xs text-slate-600 py-6">
+    ClaimGuard — built with Strands Agents SDK · Amazon Bedrock · Cedar · AgentCore · Every action hashed (SHA-256), every submission patient-signed.
+  </footer>
+</main>
+
+<script>
+const BASE = '';
+const STEP_IDS = ['step1','step2','step3','step4','step5'];
+
+function resetSteps() { STEP_IDS.forEach(id => { const el = document.getElementById(id); el.className = 'step-todo border border-gray-700 rounded-lg p-3 text-xs font-medium text-center'; }); }
+
+async function checkHealth() {
+  try {
+    const r = await fetch(BASE + '/api/health');
+    const j = await r.json();
+    if (j.status === 'ok') { document.getElementById('healthDot').className = 'inline-block w-2.5 h-2.5 rounded-full bg-healing'; }
+  } catch (e) {
+    document.getElementById('healthDot').className = 'inline-block w-2.5 h-2.5 rounded-full bg-red-500';
+  }
+}
+
+function setStepState(idx, state) {
+  const el = document.getElementById(STEP_IDS[idx]);
+  el.classList.remove('step-todo','step-done','step-active');
+  el.classList.add(state === 'done' ? 'step-done' : state === 'active' ? 'step-active' : 'step-todo');
+}
+
+async function loadSample(id) {
+  document.getElementById('timeline').classList.remove('hidden');
+  resetSteps();
+  setStepState(0, 'active');
+  document.getElementById('signSection').classList.add('hidden');
+  document.getElementById('signBtn').disabled = false;
+  document.getElementById('signBtn').textContent = 'Review & Cryptographically Sign Appeal';
+  try {
+    const r = await fetch(BASE + '/api/denials/analyze', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({sample_id: id})
+    });
+    if (!r.ok) throw new Error((await r.json()).detail || 'analysis failed');
+    const j = await r.json();
+    window.currentAppealId = j.appeal_id;
+
+    setStepState(0, 'done'); setStepState(1, 'active');
+    await new Promise(res => setTimeout(res, 350));
+    setStepState(1, 'done'); setStepState(2, 'active');
+    await new Promise(res => setTimeout(res, 350));
+    setStepState(2, 'done'); setStepState(3, 'active');
+
+    const letterEl = document.getElementById('appealLetter');
+    letterEl.textContent = j.appeal_letter_markdown || '(drafting…)';
+    letterEl.classList.add('fade-in');
+    document.getElementById('deadlineBadge').textContent =
+      (j.days_until_deadline >= 0 ? j.days_until_deadline + ' days left to file (ERISA 180-day window)' : 'Filing deadline PASSED');
+    document.getElementById('signSection').classList.remove('hidden');
+    document.getElementById('policyNote').classList.remove('hidden');
+    document.getElementById('policyNote').textContent =
+      'Zero-trust gate: submission is blocked by Cedar until you sign. ' + (j.submission_blocked_reason || '');
+  } catch (e) {
+    alert('Error: ' + e.message);
+  }
+  loadEvidence();
+}
+
+async function signAppeal() {
+  const btn = document.getElementById('signBtn');
+  btn.disabled = true;
+  btn.textContent = 'Signing… (issuing SHA-256 patient attestation)';
+  try {
+    const r = await fetch(BASE + '/api/appeals/' + window.currentAppealId + '/sign', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'});
+    const j = await r.json();
+    if (!r.ok) throw new Error(j.detail || 'signing failed');
+    setStepState(3, 'done'); setStepState(4, 'done');
+    btn.textContent = '✓ Signed & Submitted — SHA-256 ' + j.signature_sha256.slice(0,16) + '…';
+    document.getElementById('signSection').insertAdjacentHTML('beforeend',
+      '<div class="text-healing text-sm fade-in">Appeal submitted to ' + 'insurer' + ' under ERISA § 503. Evidence record written.</div>');
+  } catch (e) {
+    btn.textContent = '✕ ' + e.message;
+    btn.disabled = false;
+  }
+  loadEvidence();
+}
+
+async function loadEvidence() {
+  try {
+    const r = await fetch(BASE + '/api/evidence?limit=25');
+    const rows = await r.json();
+    const log = document.getElementById('evidenceLog');
+    log.innerHTML = rows.map(e =>
+      '<div class="card px-3 py-2 flex flex-wrap gap-x-3 gap-y-1 items-baseline">' +
+      '<span class="' + (e.decision === 'DENY' ? 'denied' : 'allowed') + ' font-bold">' + e.decision + '</span>' +
+      '<span class="text-slate-300">' + e.tool + '</span>' +
+      '<span class="text-slate-500">' + (e.rule || '') + '</span>' +
+      '<span class="hash ml-auto">' + (e.args_sha256 || '').slice(0, 12) + '…</span>' +
+      '</div>').join('') || '<div class="text-slate-500">No audit events yet — run a sample above.</div>';
+  } catch (e) {}
+}
+
+loadEvidence();
+checkHealth();
+</script>
+</body>
+</html>
