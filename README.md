@@ -8,7 +8,7 @@
 
 🎥 **Video demo:** *coming — see VIDEO_SCRIPT.md* · 🌐 **Run locally:** 60-second Quickstart below
 
-![tests](https://img.shields.io/badge/tests-passing-brightgreen) ![agentcore](https://img.shields.io/badge/AgentCore_Ready-ARM64-green) ![strands](https://img.shields.io/badge/Strands_Agents_SDK-✓-blue) ![bedrock](https://img.shields.io/badge/AWS_Bedrock-Nova_Micro-orange) ![cedar](https://img.shields.io/badge/Cedar_Policies-zero__trust-blueviolet) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
+![tests](https://img.shields.io/badge/tests-passing-brightgreen) ![agentcore](https://img.shields.io/badge/AgentCore_Ready-ARM64-green) ![strands](https://img.shields.io/badge/Strands_Agents_SDK-✓-blue) ![bedrock](https://img.shields.io/badge/AWS_Bedrock-Nova_Micro-orange) ![cedar](https://img.shields.io/badge/Cedar_Policies-zero__trust-blueviolet) ![license](https://img.shields.io/badge/license-Apache--2.0-blue)
 
 **Track:** Everyday Agents / Good Neighbor, *Agents for Humans* hackathon
 
@@ -169,4 +169,4 @@ Fax/email delivery integration · payer-portal connectors · treating-physician 
 
 ## License
 
-MIT, see [LICENSE](LICENSE).
+Apache-2.0, see [LICENSE](LICENSE).

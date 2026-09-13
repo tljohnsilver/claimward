@@ -255,4 +255,4 @@ Next on the list: fax/email delivery into real insurer claims queues, a treating
 
 ---
 
-*ClaimWard is MIT-licensed: [github.com/tljohnsilver/claimward](https://github.com/tljohnsilver/claimward) — built for the AWS "Agents for Humans" hackathon (Everyday Agents / Good Neighbor track).*
+*ClaimWard is Apache-2.0 licensed: [github.com/tljohnsilver/claimward](https://github.com/tljohnsilver/claimward) — built for the AWS "Agents for Humans" hackathon (Everyday Agents / Good Neighbor track).*
