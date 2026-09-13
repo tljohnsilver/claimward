@@ -6,7 +6,7 @@
 
 > **Researches clinical guidelines, drafts the formal ERISA § 503 appeal, and never submits a single word without the patient's cryptographic signature.**
 
-🎥 **Video demo:** *coming — see VIDEO_SCRIPT.md* · 🌐 **Run locally:** 60-second Quickstart below
+🎥 **Video demo:** [Watch on YouTube (Demo)](https://youtu.be/lwVZ17QARoc?si=lqqKxfGvw1zLl10-) · 🌐 **Run locally:** 60-second Quickstart below
 
 ![tests](https://img.shields.io/badge/tests-passing-brightgreen) ![agentcore](https://img.shields.io/badge/AgentCore_Ready-ARM64-green) ![strands](https://img.shields.io/badge/Strands_Agents_SDK-✓-blue) ![bedrock](https://img.shields.io/badge/AWS_Bedrock-Nova_Micro-orange) ![cedar](https://img.shields.io/badge/Cedar_Policies-zero__trust-blueviolet) ![license](https://img.shields.io/badge/license-Apache--2.0-blue)
 
@@ -117,7 +117,7 @@ Every decision (`ALLOW`/`DENY`, matched rule, args SHA-256, preview) is appended
 ## Quickstart
 
 ```bash
-git clone https://github.com/tljohnsilver/claimward.git claimguard && cd claimguard
+git clone https://github.com/tljohnsilver/claimward.git && cd claimward
 python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
@@ -160,7 +160,7 @@ Deep Obsidian Navy `#0B0F19` · Trust Cobalt Blue `#2563EB` · Healing Teal `#0D
 │   └── evidence/         # audit_trail.jsonl, appeals, pending signatures
 ├── vendor/zn/            # Rust gateway source
 ├── docs/assets/          # brand kit (logo, showcase)
-└── ARCHITECTURE.md / TODO.md
+└── ARCHITECTURE.md
 ```
 
 ## Roadmap
